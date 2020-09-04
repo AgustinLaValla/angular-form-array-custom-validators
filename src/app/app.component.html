@@ -1,0 +1,64 @@
+<div class="main-container">
+	<form [formGroup]="empForm" (submit)="onSubmit()">
+		<div formArrayName="employees">
+			<div *ngFor="let employee of employees.controls; index as i">
+				<div [formGroupName]="i" class="employee-container">
+					<div class="form-control">
+						<label>Firstname</label>
+						<input type="text" formControlName="firstname" />
+						<span *ngIf="employee?.get('firstname').errors?.required && employee.get('firstname').touched"
+            class="error"
+            >Firstname is required
+            </span>
+					</div>
+					<div class="form-control">
+						<label>Lastname</label>
+						<input type="text" formControlName="lastname" />
+						<span *ngIf="employee?.get('lastname').errors?.required && employee.get('lastname').touched"
+            class="error"
+            >Firstname is required
+            </span>
+					</div>
+
+					<button (click)="removeEmployee(i)" id="removeButton">
+            Remove Employee
+          </button>
+
+					<div formArrayName="skills" style="margin-top: 15px;">
+						<div *ngFor="let skill of employeeSkills(i).controls; index as j">
+							<div [formGroupName]="j" class="skill-box">
+								<div style="display:flex">
+									<div class="skill-container">
+										<label>Skill</label>
+										<input type="text" formControlName="skill" />
+										<div *ngIf="skill.get('skill').errors?.required && skill.get('skill').touched"
+											class="error" style="margin-left:20px">
+											Skill is required
+										</div>
+                    <div *ngIf="skill.get('skill').errors?.skillExists && skill.get('skill').touched"
+											class="error" style="margin-left:20px">
+											Skill already exists
+										</div>
+									</div>
+
+									<div class="skill-container">
+										<label>Experience</label>
+										<input type="text" formControlName="exp" />
+										<div *ngIf="skill.get('exp').errors?.required && skill.get('exp').touched"
+											class="error" style="margin-left:20px">
+											Experience is required
+										</div>
+									</div>
+								</div>
+									<button (click)="removeSkill(i, j)" id="removeSkillButton">Remove skills</button>
+							</div>
+						</div>
+					</div>
+					<button (click)="addEmployeeSkill(i)" style="margin-top:15px">Add employee skill</button>
+				</div>
+				<button (click)="addEmployee()">Add Employee</button>
+			</div>
+		</div>
+		<button type="submit" class="submit-btn" >Submit</button>
+	</form>
+</div>

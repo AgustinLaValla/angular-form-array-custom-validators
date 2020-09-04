@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  font-family: sans-serif;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.employee-container {
+  border: 1px solid blue;
+  padding: 10px;
+  width: 600px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-control {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#removeButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.skill-box {
+  margin-top: 10px;
+  position:relative;
+}
+
+.error {
+  color:red;
+}
+
+.submit-btn {
+  margin-top:20px;
+  padding: 10px;
+  font-size:20px;
+  background-color: #4400ff;
+  border-radius: 5px;
+  color:white;
+  border:none;
+  cursor:pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #2d03a0;
+}
+
+.skill-container {
+  display: flex;
+  flex-direction:column;
+  
+}
+
+#removeSkillButton {
+    position: absolute;
+    top: 18px;
+    right: 140px;
+}
